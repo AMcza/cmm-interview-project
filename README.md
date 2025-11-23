@@ -1,12 +1,4 @@
-# SpringBoot 项目初始模板
-
-基于 Java SpringBoot 的项目初始模板，整合了常用框架和主流业务的示例代码。
-
-只需 1 分钟即可完成内容网站的后端！！！大家还可以在此基础上快速开发自己的项目。
-
-[toc]
-
-## 模板特点
+# 基于elaticsearch+redis+mysql的面试答题平台
 
 ### 主流框架 & 特性
 
@@ -46,18 +38,22 @@
 - 长整数丢失精度解决
 - 多环境配置
 
-
 ## 业务功能
 
-- 提供示例 SQL（用户、帖子、帖子点赞、帖子收藏表）
 - 用户登录、注册、注销、更新、检索、权限管理
 - 帖子创建、删除、编辑、更新、数据库检索、ES 灵活检索
 - 帖子点赞、取消点赞
 - 帖子收藏、取消收藏、检索已收藏帖子
 - 帖子全量同步 ES、增量同步 ES 定时任务
-- 支持微信开放平台登录
-- 支持微信公众号订阅、收发消息、设置菜单
-- 支持分业务的文件上传
+
+* **题目批量管理 P1**
+* **分词题目搜索 P1**
+* **用户刷题记录日历图 P2**
+* **自动缓存热门题目 P2**
+* **网站流量控制和熔断 P2**
+* **动态IP黑白名单过滤 P2**
+* **同端登录冲突检测 P2**
+* **分级题目反爬虫策略 P2**
 
 ### 单元测试
 
@@ -66,12 +62,9 @@
 
 ### 架构设计
 
-- 合理分层
-
+- 核心业务
 
 ## 快速上手
-
-> 所有需要修改的地方鱼皮都标记了 `todo`，便于大家找到修改的位置~
 
 ### MySQL 数据库
 
@@ -81,7 +74,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/my_db
+    url: jdbc:mysql://localhost:3306/cmm-interview
     username: root
     password: 123456
 ```
@@ -123,7 +116,6 @@ spring:
 ```
 
 修改后：
-
 
 ```java
 @SpringBootApplication
@@ -169,10 +161,40 @@ PUT post_v1
 
 ```
 // 指定生成参数
-String packageName = "com.yupi.springbootinit";
+String packageName = "com.cmm.springbootinit";
 String dataName = "用户评论";
 String dataKey = "userComment";
 String upperDataKey = "UserComment";
 ```
 
-生成代码后，可以移动到实际项目中，并且按照 `// todo` 注释的提示来针对自己的业务需求进行修改。
+### 系统优化
+
+* elasticsearch分词查找优化
+* redis位图实现用户刷题记录
+* 帖子点赞redis优化
+
+### 效果展示
+
+**主页展示**
+
+![image.png](assets/image.png)
+
+**题库题目页**
+
+![image.png](assets/image2.png)
+
+**帖子讨论**
+
+![image.png](assets/image4.png)
+
+![image.png](assets/image5.png)
+
+**管理页面**
+
+![image.png](assets/image6.png)
+
+![image.png](assets/image7.png)
+
+**个人记录页**
+
+![image.png](assets/image8.png)

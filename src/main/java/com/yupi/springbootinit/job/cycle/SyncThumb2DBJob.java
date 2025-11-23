@@ -24,7 +24,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
-@Component
+//@Component
 @Slf4j
 public class SyncThumb2DBJob {
 
